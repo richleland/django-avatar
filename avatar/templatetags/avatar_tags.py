@@ -24,7 +24,7 @@ def avatar_url(user, size=80):
                 params['d'] = AVATAR_GRAVATAR_DEFAULT
             return "http://www.gravatar.com/avatar/%s/?%s" % (
                 md5_constructor(user.email).hexdigest(),
-                urllib.urlencode(params))
+                urllib.urlencode(params).replace('&', '&amp;'))
         else:
             return get_default_avatar_url()
 register.simple_tag(avatar_url)
